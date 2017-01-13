@@ -15,3 +15,4 @@ function interface (fn){
         return generator(...arguments)
     }
 }
+module.exports = interface
