@@ -8,7 +8,7 @@ const app = koa();
 let testfun = function *() {
 
 }
-koaRouter('/test',)
+koaRouter('/test',interface())
 
 app.use(function *(){
     this.body = {
@@ -18,8 +18,6 @@ app.use(function *(){
         msg2: this.cookies.get('name2'),
         mgs3: this.headers
     };
-
-
 });
 
 app.listen(3000);
