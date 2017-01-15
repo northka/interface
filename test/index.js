@@ -1,23 +1,21 @@
 /**
  * Created by chenchaochao on 17/1/8.
  */
+'use strict'
 const koa = require('koa')
-const koaRouter = require('koa-router')
-const interface = require('../index')
+const koaRouter = require('koa-router')()
+const interfaces = require('../index')
 const app = koa();
-let testfun = function *() {
-
+let testfun = function *(test) {
+    console.log(12312)
+    console.log(test)
+    this.body ="test"
 }
-koaRouter('/test',interface())
 
-app.use(function *(){
-    this.body = {
-        data: 'hello world',
-        msg:this.cookies.get('name1'),
-        msg1: this.cookies.get('name'),
-        msg2: this.cookies.get('name2'),
-        mgs3: this.headers
-    };
-});
+koaRouter.get('/test',interfaces(testfun ,{
+    parameter: 'test'
+}))
+
+app.use(koaRouter.routes());
 
 app.listen(3000);
